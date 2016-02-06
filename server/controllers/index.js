@@ -8,13 +8,12 @@ module.exports = {
       // res.end('end')
     }, 
     post: function (req, res) { // a function which handles posting a message to the database
-      console.log('data: ', typeof req.body);
       var username = req.body.name;
       var text = req.body.text;
       
       models.messages.post(username, text);
 
-      res.send('testing post', 302,  req.body);
+      res.send('testing post', 302, req.body);
     }
   },
 
