@@ -1,12 +1,12 @@
 var express = require('express');
-var db = require('./db');
+var db = require('./db/index.js');
 
 // Middleware
 var morgan = require('morgan');
 var parser = require('body-parser');
 
 // Router
-var router = require('./routes.js');
+var router = require('./routes');
 
 var app = express();
 module.exports.app = app;
@@ -27,6 +27,6 @@ app.use(express.static(__dirname + '/../client'));
 // If we are being run directly, run the server.
 if (!module.parent) {
   app.listen(app.get('port'));
+  db.connect();
   console.log('Listening on', app.get('port'));
 }
-
